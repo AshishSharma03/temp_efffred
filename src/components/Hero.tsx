@@ -53,7 +53,7 @@ export default function Hero() {
           
       {/* Animated Gradient Orbs */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full"
+        className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-80 sm:h-80 md:w-[500px] md:h-[500px] rounded-full"
         style={{
           background: 'radial-gradient(circle, rgba(152, 171, 164, 0.12) 0%, transparent 70%)',
         }}
@@ -64,7 +64,7 @@ export default function Hero() {
         transition={{ type: 'spring', stiffness: 50 }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full"
+        className="absolute bottom-1/4 right-1/4 w-40 h-40 sm:w-64 sm:h-64 md:w-[400px] md:h-[400px] rounded-full"
         style={{
           background: 'radial-gradient(circle, rgba(194, 216, 207, 0.08) 0%, transparent 70%)',
         }}
@@ -76,18 +76,18 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left: Text Content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left space-y-6 sm:space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 border border-white/10"
             >
-              <Sparkles className="w-4 h-4 text-[#98ABA4]" />
-              <span className="text-sm text-white/70">Process Enhancement & AI Automation</span>
+              <Sparkles className="w-3 sm:w-4 h-3 sm:h-4 text-[#98ABA4]" />
+              <span className="text-xs sm:text-sm text-white/70">Process Enhancement & AI Automation</span>
             </motion.div>
 
             <motion.div className="relative">
@@ -95,7 +95,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-5xl lg:text-7xl font-bold text-white mb-4 leading-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight"
               >
                 Enterprise AI
                 <br />
@@ -105,7 +105,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="text-lg text-[#98ABA4] font-semibold mb-8"
+                className="text-base sm:text-lg text-[#98ABA4] font-semibold"
               >
                 From knowledge to action. From chaos to clarity.
               </motion.p>
@@ -115,7 +115,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg text-white/70 max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed"
+              className="text-sm sm:text-base md:text-lg text-white/70 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
               Stop searching for answers across fragmented systems. Effred Computer understands your entire operation through natural language. 
               Deepsync keeps your data synchronized across global teams. Logger AI detects problems before they become catastrophes. 
@@ -126,20 +126,20 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <Link
                 to="/products"
-                className="group flex items-center justify-center gap-2 px-8 py-4 bg-[#98ABA4] text-black font-semibold rounded-xl hover:bg-[#C2D8CF] transition-all btn-shine"
+                className="group flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#98ABA4] text-black font-semibold text-sm sm:text-base rounded-xl hover:bg-[#C2D8CF] transition-all btn-shine"
               >
                 Explore Products
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/contact"
-                className="flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white font-medium rounded-xl hover:bg-white/5 transition-all"
+                className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border border-white/20 text-white font-medium text-sm sm:text-base rounded-xl hover:bg-white/5 transition-all"
               >
-                <Play className="w-5 h-5" />
+                <Play className="w-4 sm:w-5 h-4 sm:h-5" />
                 Watch Demo
               </Link>
             </motion.div>
