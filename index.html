@@ -4,14 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Effred</title>
-  <!-- ✅ FIXED CDN - proper defer loading -->
-  <script type="module" defer>
-    (async () => {
-      if (!window.customElements.get('model-viewer')) {
-        const { default: modelViewer } = await import('https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js');
-      }
-    })();
-  </script>
+  <!-- Model Viewer CDN -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 <body>
   <div id="root"></div>
