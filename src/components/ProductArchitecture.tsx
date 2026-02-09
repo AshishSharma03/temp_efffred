@@ -24,14 +24,14 @@ export function DeepsyncArchitecture({ isMobile = false }) {
       {/* Architecture Diagram */}
       <div className={`relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-2xl sm:rounded-3xl ${isMobile ? 'p-4' : 'p-8'} border border-white/10`}>
         {/* Data Sources */}
-        <div className={`flex flex-col sm:flex-row justify-center ${isMobile ? 'gap-3 mb-4' : 'gap-6 mb-8'}`}>
+        <div className={`flex flex-col sm:flex-row items-center justify-center ${isMobile ? 'gap-3 mb-4' : 'gap-6 mb-8'}`}>
           {sources.map((source, i) => (
             <motion.div
               key={source.name}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="relative"
+              className="relative w-full sm:w-auto flex justify-center"
             >
               <div 
                 className={`${isMobile ? 'w-16 h-16' : 'w-24 h-24'} rounded-lg sm:rounded-2xl flex flex-col items-center justify-center gap-1 sm:gap-2`}
@@ -41,11 +41,11 @@ export function DeepsyncArchitecture({ isMobile = false }) {
                 }}
               >
                 <source.icon className={`${isMobile ? 'w-4 h-4' : 'w-6 h-6'}`} style={{ color: source.color }} />
-                <span className={`${isMobile ? 'text-xs' : 'text-xs'} text-white/80 font-medium text-center`}>{source.name}</span>
+                <span className={`${isMobile ? 'text-xs' : 'text-xs'} text-white/80 font-medium text-center line-clamp-2`}>{source.name}</span>
               </div>
               {/* Connection Line */}
               <motion.div
-                className={`absolute ${isMobile ? 'bottom-0' : 'bottom-0'} left-1/2 w-0.5 ${isMobile ? 'h-4' : 'h-8'} -translate-x-1/2`}
+                className={`absolute left-1/2 w-0.5 ${isMobile ? 'h-4 bottom-0' : 'h-8 bottom-0'} -translate-x-1/2`}
                 style={{ background: `linear-gradient(to bottom, ${source.color}60, transparent)` }}
                 initial={{ scaleY: 0 }}
                 animate={{ scaleY: 1 }}
