@@ -17,7 +17,7 @@ const Item = () =>
           camera-target="0.5m 0.1m 1m"
           min-camera-orbit="90deg 40deg 4.5m"
           max-camera-orbit="98deg 50deg 4.5m"
-          style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.5', zIndex: 99 }}
+          style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.5',  }}
         />
         <model-viewer
           src="/assets/eff.glb"
@@ -30,7 +30,7 @@ const Item = () =>
           camera-target="-1.3m 2m 0.3m"
           min-camera-orbit="0deg 0deg 4.5m"
           max-camera-orbit="0deg 0deg 4.5m"
-          style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.2', zIndex: 99 }}
+          style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.2', }}
         />
       </div>
 
@@ -136,6 +136,7 @@ export default function Hero() {
             >
               <Link
                 to="/products"
+                style={{zIndex:100}}
                 className="group flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#98ABA4] text-black font-semibold text-sm sm:text-base rounded-xl hover:bg-[#C2D8CF] transition-all btn-shine"
               >
                 Explore Products
@@ -143,6 +144,7 @@ export default function Hero() {
               </Link>
               <Link
                 to="/contact"
+                    style={{zIndex:100}}
                 className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border border-white/20 text-white font-medium text-sm sm:text-base rounded-xl hover:bg-white/5 transition-all"
               >
                 <Play className="w-4 sm:w-5 h-4 sm:h-5" />
