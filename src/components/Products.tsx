@@ -157,23 +157,23 @@ export default function Products() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-4 sm:mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-[#98ABA4] animate-pulse" />
-            <span className="text-sm text-white/70">Our Products</span>
+            <span className="text-xs sm:text-sm text-white/70">Our Products</span>
           </motion.div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight">
             Intelligent Solutions for
             <br />
             <span className="text-gradient">Modern Enterprises</span>
           </h2>
-          <p className="text-white/60 max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-white/60 max-w-2xl mx-auto leading-relaxed px-2">
             From data synchronization to AI-powered operations, our product suite 
             transforms how businesses operate in the digital age.
           </p>
@@ -184,13 +184,13 @@ export default function Products() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-2"
         >
           {products.map((product) => (
             <motion.button
               key={product.id}
               onClick={() => setActiveProduct(product)}
-              className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+              className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap ${
                 activeProduct.id === product.id
                   ? 'bg-gradient-to-r from-[#98ABA4] to-[#C2D8CF] text-black shadow-lg shadow-[#98ABA4]/30'
                   : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white border border-white/10 hover:border-white/30'
@@ -211,32 +211,35 @@ export default function Products() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="grid lg:grid-cols-2 gap-12 items-start"
+            className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start"
           >
             {/* Left: Content */}
-            <div>
+            <div className="space-y-6">
               <div 
-                className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
+                className="w-12 sm:w-16 h-12 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center"
                 style={{ backgroundColor: `${activeProduct.color}15` }}
               >
                 <activeProduct.icon 
-                  className="w-8 h-8" 
+                  className="w-6 sm:w-8 h-6 sm:h-8" 
                   style={{ color: activeProduct.color }}
                 />
               </div>
 
-              <h3 className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                {activeProduct.name}
-              </h3>
-              <p className="text-xl mb-4" style={{ color: activeProduct.color }}>
-                {activeProduct.tagline}
-              </p>
-              <p className="text-white/60 mb-8 leading-relaxed">
+              <div className="space-y-2">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+                  {activeProduct.name}
+                </h3>
+                <p className="text-base sm:text-lg md:text-xl" style={{ color: activeProduct.color }}>
+                  {activeProduct.tagline}
+                </p>
+              </div>
+
+              <p className="text-xs sm:text-sm md:text-base text-white/60 leading-relaxed">
                 {activeProduct.description}
               </p>
 
               {/* Benefits */}
-              <div className="flex gap-6 mb-8">
+              <div className="grid grid-cols-3 gap-3 sm:gap-6">
                 {activeProduct.benefits.map((benefit, idx) => (
                   <motion.div
                     key={benefit.label}
@@ -245,7 +248,7 @@ export default function Products() {
                     transition={{ delay: idx * 0.1 }}
                     className="text-center"
                   >
-                    <div className="text-2xl font-bold" style={{ color: activeProduct.color }}>
+                    <div className="text-lg sm:text-2xl font-bold" style={{ color: activeProduct.color }}>
                       {benefit.value}
                     </div>
                     <div className="text-white/50 text-xs">{benefit.label}</div>
@@ -254,38 +257,38 @@ export default function Products() {
               </div>
 
               {/* Features */}
-              <div className="space-y-3 mb-8">
+              <div className="space-y-2 sm:space-y-3">
                 {activeProduct.features.slice(0, 4).map((feature, idx) => (
                   <motion.div
                     key={feature}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="flex items-center gap-3"
+                    className="flex items-start gap-3"
                   >
                     <div 
-                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
                       style={{ backgroundColor: `${activeProduct.color}25` }}
                     >
                       <Check className="w-3 h-3" style={{ color: activeProduct.color }} />
                     </div>
-                    <span className="text-white/70 text-sm">{feature}</span>
+                    <span className="text-white/70 text-xs sm:text-sm">{feature}</span>
                   </motion.div>
                 ))}
               </div>
 
               <Link
                 to={`/products#${activeProduct.id}`}
-                className="inline-flex items-center gap-2 text-[#98ABA4] font-medium hover:text-[#C2D8CF] transition-colors group"
+                className="inline-flex items-center gap-2 text-[#98ABA4] font-medium text-sm sm:text-base hover:text-[#C2D8CF] transition-colors group"
               >
                 View Full Details
-                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ExternalLink className="w-3 sm:w-4 h-3 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
             {/* Right: Architecture Visualization */}
             <motion.div 
-              className="relative"
+              className="relative mt-8 lg:mt-0"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -302,22 +305,22 @@ export default function Products() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-32"
+          className="mt-16 sm:mt-24 md:mt-32"
         >
-          <div className="text-center mb-20">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20 px-2">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-4 sm:mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-[#98ABA4] animate-pulse" />
-              <span className="text-sm text-white/70">Complete Automation Ecosystem</span>
+              <span className="text-xs sm:text-sm text-white/70">Complete Automation Ecosystem</span>
             </motion.div>
-            <h3 className="text-3xl lg:text-5xl font-bold text-white mb-4">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 leading-tight">
               From Data to <span className="text-gradient">Intelligent Action</span>
             </h3>
-            <p className="text-white/60 max-w-3xl mx-auto text-lg leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/60 max-w-3xl mx-auto leading-relaxed">
               A seamless pipeline that transforms raw data into actionable intelligence and automated resolutions across your enterprise
             </p>
           </div>
