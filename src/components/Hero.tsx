@@ -4,35 +4,127 @@ import { ArrowRight, Play, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 
-const Item = () => 
-<div className="absolute inset-0 w-full h-full">
-        <model-viewer
-          src="/assets/ballsW.glb"
-          autoplay
-          loop
-          exposure="1.0"
-          shadow-intensity="0.8"
-          shadow-softness="0.4"
-          background-blur="0.3"
-          camera-target="0.5m 0.1m 1m"
-          min-camera-orbit="90deg 40deg 4.5m"
-          max-camera-orbit="98deg 50deg 4.5m"
-          style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.5',  }}
-        />
-        <model-viewer
-          src="/assets/eff.glb"
-          autoplay
-          loop
-          exposure="1.0"
-          shadow-intensity="0.8"
-          shadow-softness="0.4"
-          background-blur="0.3"
-          camera-target="-1.3m 2m 0.3m"
-          min-camera-orbit="0deg 0deg 4.5m"
-          max-camera-orbit="0deg 0deg 4.5m"
-          style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.2', }}
-        />
-      </div>
+// const Item = () => 
+// <div className="absolute inset-0 w-full h-full">
+//         <model-viewer
+//           src="/assets/ballsW.glb"
+//           autoplay
+//           loop
+//           exposure="1.0"
+//           shadow-intensity="0.8"
+//           shadow-softness="0.4"
+//           background-blur="0.3"
+//           camera-target="0.5m 0.1m 1m"
+//           min-camera-orbit="90deg 40deg 4.5m"
+//           max-camera-orbit="98deg 50deg 4.5m"
+//           style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.5',  }}
+//         />
+//         <model-viewer
+//           src="/assets/eff.glb"
+//           autoplay
+//           loop
+//           exposure="1.0"
+//           shadow-intensity="0.8"
+//           shadow-softness="0.4"
+//           background-blur="0.3"
+//           camera-target="-1.3m 2m 0.3m"
+//           min-camera-orbit="0deg 0deg 4.5m"
+//           max-camera-orbit="0deg 0deg 4.5m"
+//           style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.2', }}
+//         />
+//       </div>
+
+// const ItemMobile = () => 
+// <div className="absolute inset-0 w-full h-full">
+//         <model-viewer
+//           src="/assets/ballsW.glb"
+//           autoplay
+//           loop
+//           exposure="1.0"
+//           shadow-intensity="0.8"
+//           shadow-softness="0.4"
+//           background-blur="0.3"
+//           camera-target="0m 0m 0m"
+//           min-camera-orbit="90deg 40deg 4.5m"
+//           max-camera-orbit="98deg 50deg 4.5m"
+//           style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.5',  }}
+//         />
+//         <model-viewer
+//           src="/assets/eff.glb"
+//           autoplay
+//           loop
+//           exposure="1.0"
+//           shadow-intensity="0.8"
+//           shadow-softness="0.4"
+//           background-blur="0.3"
+//           camera-target="0m 2m 0m"
+//           min-camera-orbit="0deg 0deg 4.5m"
+//           max-camera-orbit="0deg 0deg 4.5m"
+//           style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.2', }}
+//         />
+//       </div>
+
+const Item = ({ className = "hidden lg:block" }) => (
+  <div className={`absolute inset-0 w-full h-full ${className}`}>
+    <model-viewer
+      src="/assets/ballsW.glb"
+      autoplay
+      loop
+      exposure="1.0"
+      shadow-intensity="0.8"
+      shadow-softness="0.4"
+      background-blur="0.3"
+      camera-target="0.1m 0.1m 1m"
+      min-camera-orbit="90deg 40deg 4.5m"
+      max-camera-orbit="98deg 50deg 4.5m"
+      style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.5' }}
+    />
+    <model-viewer
+      src="/assets/eff.glb"
+      autoplay
+      loop
+      exposure="1.0"
+      shadow-intensity="0.8"
+      shadow-softness="0.4"
+      background-blur="0.3"
+      camera-target="-1.4m 2m 0.01m"
+      min-camera-orbit="0deg 0deg 4.5m"
+      max-camera-orbit="0deg 0deg 4.5m"
+      style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.2' }}
+    />
+  </div>
+);
+
+const ItemMobile = ({ className = "block lg:hidden" }) => (
+  <div className={`absolute inset-0 w-full h-full ${className}`}>
+    <model-viewer
+      src="/assets/ballsW.glb"
+      autoplay
+      loop
+      exposure="1.0"
+      shadow-intensity="0.8"
+      shadow-softness="0.4"
+      background-blur="0.3"
+      camera-target="0m 0m 0m"
+      min-camera-orbit="90deg 40deg 4.5m"
+      max-camera-orbit="98deg 50deg 4.5m"
+      style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.5' }}
+    />
+    <model-viewer
+      src="/assets/eff.glb"
+      autoplay
+      loop
+      exposure="1.0"
+      shadow-intensity="0.8"
+      shadow-softness="0.4"
+      background-blur="0.3"
+      camera-target="0m 2m 0m"
+      min-camera-orbit="0deg 0deg 4.5m"
+      max-camera-orbit="0deg 0deg 4.5m"
+      style={{ height: '100vh', width: '100%', position: 'absolute', opacity: '0.2' }}
+    />
+  </div>
+);
 
 
 
@@ -54,7 +146,12 @@ export default function Hero() {
     >
       {/* 3D Model Viewers */}
       
-      <Item/>
+     {/* Hide ItemMobile on desktop (lg+), show on mobile/tab */}
+    <ItemMobile />
+
+    {/* Hide Item on mobile/tab (lg+), show on desktop */}
+    <Item  />
+
 
           
       {/* Animated Gradient Orbs */}

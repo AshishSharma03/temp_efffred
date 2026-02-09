@@ -1,10 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Database, Server, Cpu, ArrowRight, Check, Globe, Lock, Zap, Users } from 'lucide-react';
+import { Database, Server, Cpu, ArrowRight, Check, Globe, Lock, Zap, Users ,Brain} from 'lucide-react';
 
 // Deepsync Architecture Component
-export function DeepsyncArchitecture({ isMobile = false }) {
+export function DeepsyncArchitecture({ isMobile = false, isMobileCompact = false }) {
   const sources = [
     { name: 'UK Client', icon: Globe, color: '#98ABA4' },
     { name: 'USA Client', icon: Globe, color: '#C2D8CF' },
@@ -13,16 +13,65 @@ export function DeepsyncArchitecture({ isMobile = false }) {
 
   const integrations = ['Jira', 'ServiceNow', 'BMC', 'Zendesk'];
 
+  // Mini compact version for mobile
+  if (isMobileCompact) {
+    return (
+      <div className="relative w-full overflow-hidden">
+        <div className="text-center mb-2 px-2">
+          <h3 className="text-sm font-bold text-white">Deepsync</h3>
+        </div>
+        <div className="relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl p-2 border border-white/10 mx-2">
+          {/* Compact sources */}
+          <div className="flex justify-center gap-2 mb-2">
+            {sources.map((source) => (
+              <div
+                key={source.name}
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{
+                  background: `linear-gradient(135deg, ${source.color}20, ${source.color}10)`,
+                  border: `1px solid ${source.color}40`,
+                }}
+              >
+                <source.icon className="w-2.5 h-2.5" style={{ color: source.color }} />
+              </div>
+            ))}
+          </div>
+          {/* Compact center */}
+          <div className="flex justify-center mb-2">
+            <div
+              className="w-16 h-14 rounded-lg flex flex-col items-center justify-center"
+              style={{
+                background: 'linear-gradient(135deg, #98ABA420, #6B8E7D10)',
+                border: '1px solid #98ABA430',
+              }}
+            >
+              <Database className="w-3 h-3 text-[#98ABA4]" />
+              <span className="text-xs text-white font-semibold mt-0.5">Sync</span>
+            </div>
+          </div>
+          {/* Compact integrations */}
+          <div className="flex flex-wrap justify-center gap-0.5">
+            {integrations.slice(0, 2).map((integration) => (
+              <div key={integration} className="px-1.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/70 text-xs">
+                {integration}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="relative w-full">
+    <div className="relative w-full overflow-hidden">
       {/* Title */}
-      <div className={`text-center ${isMobile ? 'mb-4' : 'mb-8'}`}>
+      <div className={`text-center ${isMobile ? 'mb-4 px-2' : 'mb-8'}`}>
         <h3 className={`${isMobile ? 'text-base' : 'text-xl'} font-bold text-white mb-1 sm:mb-2`}>Deepsync Architecture</h3>
-        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>Unified data platform connecting global environments</p>
+        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>Unified data platform</p>
       </div>
 
       {/* Architecture Diagram */}
-      <div className={`relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-2xl sm:rounded-3xl ${isMobile ? 'p-4' : 'p-8'} border border-white/10`}>
+      <div className={`relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-2xl sm:rounded-3xl ${isMobile ? 'p-3' : 'p-8'} border border-white/10 mx-2 sm:mx-0`}>
         {/* Data Sources */}
         <div className={`flex flex-col sm:flex-row items-center justify-center ${isMobile ? 'gap-3 mb-4' : 'gap-6 mb-8'}`}>
           {sources.map((source, i) => (
@@ -138,12 +187,51 @@ export function DeepsyncArchitecture({ isMobile = false }) {
 import { ComputerAIInterface } from './ComputerAIInterface';
 
 // Computer AI Architecture
-export function ComputerArchitecture({ isMobile = false }) {
+export function ComputerArchitecture({ isMobile = false, isMobileCompact = false }) {
+  // Mini compact version for mobile
+  if (isMobileCompact) {
+    return (
+      <div className="relative w-full overflow-hidden">
+        <div className="text-center mb-2 px-2">
+          <h3 className="text-sm font-bold text-white">Computer AI</h3>
+        </div>
+        <div className="relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl p-2 border border-white/10 mx-2">
+          {/* Compact AI Engine */}
+          <div className="flex justify-center mb-2">
+            <div className="px-3 py-2 rounded-lg bg-gradient-to-r from-[#C2D8CF]/20 to-[#98ABA4]/10 border border-[#C2D8CF]/30">
+              <div className="flex items-center gap-1.5">
+                <Zap className="w-3 h-3 text-[#C2D8CF]" />
+                <span className="text-xs text-white font-medium">LLM Engine</span>
+              </div>
+            </div>
+          </div>
+          {/* Compact chat */}
+          <div className="max-w-xs mx-auto">
+            <div className="bg-white/5 rounded-lg p-2 border border-white/10">
+              <div className="flex items-center gap-1 mb-1">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#98ABA4]" />
+                <span className="text-xs text-white/50">AI</span>
+              </div>
+              <div className="space-y-1">
+                <div className="bg-white/5 rounded-lg p-1.5 text-xs text-white/70">
+                  "Show tickets"
+                </div>
+                <div className="bg-[#98ABA4]/10 rounded-lg p-1.5 text-xs text-[#98ABA4] border border-[#98ABA4]/20">
+                  Found 23...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="relative w-full">
-      <div className={`text-center ${isMobile ? 'mb-4' : 'mb-8'}`}>
+    <div className="relative w-full overflow-hidden">
+      <div className={`text-center ${isMobile ? 'mb-4 px-2' : 'mb-8'}`}>
         <h3 className={`${isMobile ? 'text-base' : 'text-xl'} font-bold text-white ${isMobile ? 'mb-1' : 'mb-2'}`}>Effred Computer AI</h3>
-        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>Intelligent knowledge base with NLP</p>
+        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>Knowledge base with NLP</p>
       </div>
       
       {/* Real Interface */}
@@ -191,7 +279,7 @@ export function ComputerArchitecture({ isMobile = false }) {
 }
 
 // Logger AI Architecture
-export function LoggerArchitecture({ isMobile = false }) {
+export function LoggerArchitecture({ isMobile = false, isMobileCompact = false }) {
   const servers = [
     { name: 'Server 1', status: 'healthy', logs: '2.4M' },
     { name: 'Server 2', status: 'warning', logs: '1.8M' },
@@ -199,14 +287,55 @@ export function LoggerArchitecture({ isMobile = false }) {
     { name: 'Microservice A', status: 'healthy', logs: '890K' },
   ];
 
+  // Mini compact version for mobile
+  if (isMobileCompact) {
+    return (
+      <div className="relative w-full overflow-hidden">
+        <div className="text-center mb-2 px-2">
+          <h3 className="text-sm font-bold text-white">Logger AI</h3>
+        </div>
+        <div className="relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl p-2 border border-white/10 mx-2">
+          {/* Compact servers */}
+          <div className="grid grid-cols-2 gap-1.5 mb-2">
+            {servers.slice(0, 2).map((server) => (
+              <div
+                key={server.name}
+                className="p-1.5 rounded-lg bg-white/5 border border-white/10"
+              >
+                <div className="flex items-center justify-between mb-0.5">
+                  <span className="text-xs text-white/80 font-medium">{server.name}</span>
+                  <div
+                    className={`w-1.5 h-1.5 rounded-full ${
+                      server.status === 'healthy' ? 'bg-green-500' : 'bg-yellow-500'
+                    }`}
+                  />
+                </div>
+                <div className="text-xs text-white/50">{server.logs}</div>
+              </div>
+            ))}
+          </div>
+          {/* Compact AI Engine */}
+          <div className="flex justify-center">
+            <div className="px-2 py-1.5 rounded-lg bg-gradient-to-br from-[#707070]/30 to-[#505050]/10 border border-[#707070]/40">
+              <div className="flex items-center gap-1">
+                <Cpu className="w-3 h-3 text-[#707070]" />
+                <span className="text-xs text-white font-semibold">Logger AI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="relative w-full">
-      <div className={`text-center ${isMobile ? 'mb-4' : 'mb-8'}`}>
+    <div className="relative w-full overflow-hidden">
+      <div className={`text-center ${isMobile ? 'mb-4 px-2' : 'mb-8'}`}>
         <h3 className={`${isMobile ? 'text-base' : 'text-xl'} font-bold text-white ${isMobile ? 'mb-1' : 'mb-2'}`}>Logger AI Architecture</h3>
-        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>Intelligent log analysis across systems</p>
+        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>Intelligent log analysis</p>
       </div>
 
-      <div className={`relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-2xl sm:rounded-3xl ${isMobile ? 'p-4' : 'p-8'} border border-white/10`}>
+      <div className={`relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-2xl sm:rounded-3xl ${isMobile ? 'p-3' : 'p-8'} border border-white/10 mx-2 sm:mx-0`}>
         {/* Servers Grid */}
         <div className={`${isMobile ? 'grid-cols-2' : 'grid-cols-2'} grid gap-2 sm:gap-4 ${isMobile ? 'mb-4' : 'mb-8'}`}>
           {servers.map((server, i) => (
@@ -305,13 +434,13 @@ export function TmsArchitecture({ isMobile = false }) {
   ];
 
   return (
-    <div className="relative w-full">
-      <div className={`text-center ${isMobile ? 'mb-4' : 'mb-8'}`}>
+    <div className="relative w-full overflow-hidden">
+      <div className={`text-center ${isMobile ? 'mb-4 px-2' : 'mb-8'}`}>
         <h3 className={`${isMobile ? 'text-base' : 'text-xl'} font-bold text-white ${isMobile ? 'mb-1' : 'mb-2'}`}>TMS AI Architecture</h3>
-        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>Intelligent ticket management with AI routing</p>
+        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>Intelligent ticket management</p>
       </div>
 
-      <div className={`relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-2xl sm:rounded-3xl ${isMobile ? 'p-4' : 'p-8'} border border-white/10`}>
+      <div className={`relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-2xl sm:rounded-3xl ${isMobile ? 'p-3' : 'p-8'} border border-white/10 mx-2 sm:mx-0`}>
         {/* Ticket Flow */}
         <div className={`flex flex-col ${isMobile ? 'sm:flex-row' : 'flex-row'} items-center justify-center ${isMobile ? 'gap-2' : 'gap-4'} ${isMobile ? 'mb-4' : 'mb-8'}`}>
           {(isMobile ? ['Incoming', 'Analysis', 'Route', 'Resolve'] : ['Incoming', 'AI Analysis', 'Routing', 'Resolution']).map((step, i) => (
@@ -399,13 +528,13 @@ export function HrmsArchitecture({ isMobile = false }) {
   ];
 
   return (
-    <div className="relative w-full">
-      <div className={`text-center ${isMobile ? 'mb-4' : 'mb-8'}`}>
+    <div className="relative w-full overflow-hidden">
+      <div className={`text-center ${isMobile ? 'mb-4 px-2' : 'mb-8'}`}>
         <h3 className={`${isMobile ? 'text-base' : 'text-xl'} font-bold text-white ${isMobile ? 'mb-1' : 'mb-2'}`}>HRMS Architecture</h3>
-        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>End-to-end HR automation with AI</p>
+        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>End-to-end HR automation</p>
       </div>
 
-      <div className={`relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-2xl sm:rounded-3xl ${isMobile ? 'p-4' : 'p-8'} border border-white/10`}>
+      <div className={`relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-2xl sm:rounded-3xl ${isMobile ? 'p-3' : 'p-8'} border border-white/10 mx-2 sm:mx-0`}>
         {/* Pipeline */}
         <div className={`flex flex-col sm:flex-row items-center ${isMobile ? 'gap-3' : 'gap-0'} ${isMobile ? 'mb-4' : 'mb-8'} justify-between`}>
           {stages.map((stage, i) => (
@@ -493,9 +622,9 @@ export function HrmsArchitecture({ isMobile = false }) {
 }
 
 // ERP Architecture
-export function ErpArchitecture() {
+export function ErpArchitecture({ isMobile = false }) {
   const modules = [
-    { name: 'Finance', icon: Database, color: '#98ABA4' },
+    { name: 'Finance', icon: Brain, color: '#98ABA4' },
     { name: 'HR', icon: Users, color: '#C2D8CF' },
     { name: 'Inventory', icon: Server, color: '#64C8FF' },
     { name: 'Sales', icon: Globe, color: '#D4AF37' },
@@ -504,33 +633,33 @@ export function ErpArchitecture() {
   ];
 
   return (
-    <div className="relative w-full">
-      <div className="text-center mb-8">
-        <h3 className="text-xl font-bold text-white mb-2">ERP Architecture</h3>
-        <p className="text-white/50 text-sm">Unified enterprise resource planning with role-based access</p>
+    <div className="relative w-full overflow-hidden">
+      <div className={`text-center ${isMobile ? 'mb-4 px-2' : 'mb-8'}`}>
+        <h3 className={`${isMobile ? 'text-base' : 'text-xl'} font-bold text-white ${isMobile ? 'mb-1' : 'mb-2'}`}>ERP Architecture</h3>
+        <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/50`}>Unified enterprise resource planning</p>
       </div>
 
-      <div className="relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-3xl p-8 border border-white/10">
+      <div className={`relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-2xl sm:rounded-3xl ${isMobile ? 'p-3' : 'p-8'} border border-white/10 mx-2 sm:mx-0`}>
         {/* Central Hub */}
-        <div className="relative flex justify-center mb-8">
+        <div className={`relative flex justify-center ${isMobile ? 'mb-4' : 'mb-8'}`}>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="relative w-32 h-32"
+            className={`relative ${isMobile ? 'w-20 h-20' : 'w-32 h-32'}`}
           >
             <motion.div
-              className="absolute inset-0 rounded-full border-2 border-[#D4AF37]/30"
+              className={`absolute inset-0 rounded-full border-2 border-[#D4AF37]/30`}
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
             />
             <div className="absolute inset-4 rounded-full bg-gradient-to-br from-[#D4AF37]/30 to-[#B8860B]/10 border border-[#D4AF37]/40 flex items-center justify-center">
-              <Database className="w-10 h-10 text-[#D4AF37]" />
+              <Database className={`${isMobile ? 'w-6 h-6' : 'w-10 h-10'} text-[#D4AF37]`} />
             </div>
             {/* Orbiting modules */}
             {modules.slice(0, 4).map((module, i) => {
               const angle = (i * 90) * (Math.PI / 180);
-              const x = Math.cos(angle) * 70;
-              const y = Math.sin(angle) * 70;
+              const x = Math.cos(angle) * (isMobile ? 35 : 70);
+              const y = Math.sin(angle) * (isMobile ? 35 : 70);
               return (
                 <motion.div
                   key={module.name}
@@ -541,13 +670,13 @@ export function ErpArchitecture() {
                   style={{ transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))` }}
                 >
                   <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
+                    className={`${isMobile ? 'w-7 h-7' : 'w-10 h-10'} rounded-lg flex items-center justify-center`}
                     style={{ 
                       background: `linear-gradient(135deg, ${module.color}30, ${module.color}10)`,
                       border: `1px solid ${module.color}50`
                     }}
                   >
-                    <module.icon className="w-4 h-4" style={{ color: module.color }} />
+                    <module.icon className={`${isMobile ? 'w-3 h-3' : 'w-4 h-4'}`} style={{ color: module.color }} />
                   </div>
                 </motion.div>
               );
@@ -556,21 +685,21 @@ export function ErpArchitecture() {
         </div>
 
         {/* Module Grid */}
-        <div className="grid grid-cols-3 gap-3 mb-6">
+        <div className={`grid ${isMobile ? 'grid-cols-2' : 'grid-cols-3'} ${isMobile ? 'gap-2' : 'gap-3'} ${isMobile ? 'mb-4' : 'mb-6'}`}>
           {modules.map((module, i) => (
             <motion.div
               key={module.name}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 + i * 0.05 }}
-              className="p-3 rounded-xl flex items-center gap-3"
+              className={`${isMobile ? 'p-2' : 'p-3'} rounded-lg sm:rounded-xl flex flex-col sm:flex-row items-center gap-1 sm:gap-3`}
               style={{ 
                 background: `linear-gradient(135deg, ${module.color}10, transparent)`,
                 border: `1px solid ${module.color}20`
               }}
             >
-              <module.icon className="w-4 h-4" style={{ color: module.color }} />
-              <span className="text-white/70 text-sm">{module.name}</span>
+              <module.icon className={`${isMobile ? 'w-3 h-3' : 'w-4 h-4'}`} style={{ color: module.color }} />
+              <span className={`${isMobile ? 'text-xs text-center' : 'text-sm'} text-white/70`}>{isMobile ? module.name.slice(0, 8) : module.name}</span>
             </motion.div>
           ))}
         </div>
@@ -580,16 +709,16 @@ export function ErpArchitecture() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2 }}
-          className="p-4 rounded-xl bg-white/5 border border-white/10"
+          className={`${isMobile ? 'p-3' : 'p-4'} rounded-lg sm:rounded-xl bg-white/5 border border-white/10`}
         >
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-white/80 text-sm font-medium">Role-Based Access Control</span>
-            <Lock className="w-4 h-4 text-[#98ABA4]" />
+          <div className="flex items-center justify-between mb-2 sm:mb-3">
+            <span className={`${isMobile ? 'text-xs' : 'text-sm'} text-white/80 font-medium`}>Role-Based Access</span>
+            <Lock className={`${isMobile ? 'w-3 h-3' : 'w-4 h-4'} text-[#98ABA4]`} />
           </div>
-          <div className="flex gap-2">
+          <div className={`flex flex-wrap gap-1 sm:gap-2`}>
             {['Admin', 'Manager', 'Employee', 'Customer'].map((role) => (
-              <span key={role} className="px-3 py-1 rounded-full bg-white/5 text-white/60 text-xs">
-                {role}
+              <span key={role} className={`${isMobile ? 'px-2 py-0.5 text-xs' : 'px-3 py-1 text-xs'} rounded-full bg-white/5 text-white/60`}>
+                {isMobile ? role.slice(0, 3) : role}
               </span>
             ))}
           </div>
