@@ -10,7 +10,7 @@ const techStack = [
   { name: 'Databricks', src: '/assets/dbrx.png' },
 ];
 
-export default function TrustedBy() {
+export default function   TrustedBy() {
   const duplicatedStack = [...techStack, ...techStack, ...techStack];
 
   return (

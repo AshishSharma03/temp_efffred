@@ -299,12 +299,12 @@ export default function Home() {
       transition={{ duration: 0.3 }}
     >
       <Hero />
-      <TrustedBy />
+   <TrustedBy />
       <Products />
-      <StatsSection />
+        <StatsSection />
       <ProcessSection />
       <FeaturesSection />
-      <CTASection />
+      <CTASection /> 
     </motion.main>
   );
 }
