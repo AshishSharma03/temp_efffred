@@ -6,6 +6,7 @@ import { Check, Database, Brain, FileText, Ticket, Users, Building2, ExternalLin
 import { Link } from 'react-router-dom';
 import { DeepsyncArchitecture, ComputerArchitecture, LoggerArchitecture, TmsArchitecture, HrmsArchitecture, ErpArchitecture } from './ProductArchitecture';
 import { WorkflowAnimation } from './WorkflowAnimation';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const products = [
   {
@@ -145,7 +146,7 @@ const products = [
 export default function Products() {
   const [activeProduct, setActiveProduct] = useState(products[0]);
   const ArchitectureComponent = activeProduct.architecture;
-  const isMobile = window.innerWidth < 768;
+  const isMobile = useIsMobile();
 
   return (
     <section className="relative py-24 bg-[#0a0a0a]">
