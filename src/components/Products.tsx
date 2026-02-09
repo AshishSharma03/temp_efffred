@@ -145,6 +145,7 @@ const products = [
 export default function Products() {
   const [activeProduct, setActiveProduct] = useState(products[0]);
   const ArchitectureComponent = activeProduct.architecture;
+  const isMobile = window.innerWidth < 768;
 
   return (
     <section className="relative py-24 bg-[#0a0a0a]">
@@ -295,7 +296,7 @@ export default function Products() {
             >
               {/* Animated glow background */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#98ABA4]/5 to-transparent rounded-3xl blur-2xl -z-10" />
-              <ArchitectureComponent />
+              <ArchitectureComponent isMobile={isMobile} />
             </motion.div>
           </motion.div>
         </AnimatePresence>
