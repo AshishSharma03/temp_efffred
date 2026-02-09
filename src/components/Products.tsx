@@ -147,6 +147,9 @@ export default function Products() {
   const [activeProduct, setActiveProduct] = useState(products[0]);
   const ArchitectureComponent = activeProduct.architecture;
   const isMobile = useIsMobile();
+  
+  // Use compact version for first 3 products on mobile
+  const isMobileCompact = isMobile && (activeProduct.id === 'deepsync' || activeProduct.id === 'computer' || activeProduct.id === 'logger');
 
   return (
     <section className="relative py-24 bg-[#0a0a0a]">
@@ -297,7 +300,7 @@ export default function Products() {
             >
               {/* Animated glow background */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#98ABA4]/5 to-transparent rounded-3xl blur-2xl -z-10" />
-              <ArchitectureComponent isMobile={isMobile} />
+              <ArchitectureComponent isMobile={isMobile} isMobileCompact={isMobileCompact} />
             </motion.div>
           </motion.div>
         </AnimatePresence>

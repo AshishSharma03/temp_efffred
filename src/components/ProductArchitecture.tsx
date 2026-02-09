@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Database, Server, Cpu, ArrowRight, Check, Globe, Lock, Zap, Users } from 'lucide-react';
 
 // Deepsync Architecture Component
-export function DeepsyncArchitecture({ isMobile = false }) {
+export function DeepsyncArchitecture({ isMobile = false, isMobileCompact = false }) {
   const sources = [
     { name: 'UK Client', icon: Globe, color: '#98ABA4' },
     { name: 'USA Client', icon: Globe, color: '#C2D8CF' },
@@ -12,6 +12,55 @@ export function DeepsyncArchitecture({ isMobile = false }) {
   ];
 
   const integrations = ['Jira', 'ServiceNow', 'BMC', 'Zendesk'];
+
+  // Mini compact version for mobile
+  if (isMobileCompact) {
+    return (
+      <div className="relative w-full overflow-hidden">
+        <div className="text-center mb-2 px-2">
+          <h3 className="text-sm font-bold text-white">Deepsync</h3>
+        </div>
+        <div className="relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl p-2 border border-white/10 mx-2">
+          {/* Compact sources */}
+          <div className="flex justify-center gap-2 mb-2">
+            {sources.map((source) => (
+              <div
+                key={source.name}
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{
+                  background: `linear-gradient(135deg, ${source.color}20, ${source.color}10)`,
+                  border: `1px solid ${source.color}40`,
+                }}
+              >
+                <source.icon className="w-2.5 h-2.5" style={{ color: source.color }} />
+              </div>
+            ))}
+          </div>
+          {/* Compact center */}
+          <div className="flex justify-center mb-2">
+            <div
+              className="w-16 h-14 rounded-lg flex flex-col items-center justify-center"
+              style={{
+                background: 'linear-gradient(135deg, #98ABA420, #6B8E7D10)',
+                border: '1px solid #98ABA430',
+              }}
+            >
+              <Database className="w-3 h-3 text-[#98ABA4]" />
+              <span className="text-xs text-white font-semibold mt-0.5">Sync</span>
+            </div>
+          </div>
+          {/* Compact integrations */}
+          <div className="flex flex-wrap justify-center gap-0.5">
+            {integrations.slice(0, 2).map((integration) => (
+              <div key={integration} className="px-1.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-white/70 text-xs">
+                {integration}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -138,7 +187,46 @@ export function DeepsyncArchitecture({ isMobile = false }) {
 import { ComputerAIInterface } from './ComputerAIInterface';
 
 // Computer AI Architecture
-export function ComputerArchitecture({ isMobile = false }) {
+export function ComputerArchitecture({ isMobile = false, isMobileCompact = false }) {
+  // Mini compact version for mobile
+  if (isMobileCompact) {
+    return (
+      <div className="relative w-full overflow-hidden">
+        <div className="text-center mb-2 px-2">
+          <h3 className="text-sm font-bold text-white">Computer AI</h3>
+        </div>
+        <div className="relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl p-2 border border-white/10 mx-2">
+          {/* Compact AI Engine */}
+          <div className="flex justify-center mb-2">
+            <div className="px-3 py-2 rounded-lg bg-gradient-to-r from-[#C2D8CF]/20 to-[#98ABA4]/10 border border-[#C2D8CF]/30">
+              <div className="flex items-center gap-1.5">
+                <Zap className="w-3 h-3 text-[#C2D8CF]" />
+                <span className="text-xs text-white font-medium">LLM Engine</span>
+              </div>
+            </div>
+          </div>
+          {/* Compact chat */}
+          <div className="max-w-xs mx-auto">
+            <div className="bg-white/5 rounded-lg p-2 border border-white/10">
+              <div className="flex items-center gap-1 mb-1">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#98ABA4]" />
+                <span className="text-xs text-white/50">AI</span>
+              </div>
+              <div className="space-y-1">
+                <div className="bg-white/5 rounded-lg p-1.5 text-xs text-white/70">
+                  "Show tickets"
+                </div>
+                <div className="bg-[#98ABA4]/10 rounded-lg p-1.5 text-xs text-[#98ABA4] border border-[#98ABA4]/20">
+                  Found 23...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative w-full overflow-hidden">
       <div className={`text-center ${isMobile ? 'mb-4 px-2' : 'mb-8'}`}>
@@ -191,13 +279,54 @@ export function ComputerArchitecture({ isMobile = false }) {
 }
 
 // Logger AI Architecture
-export function LoggerArchitecture({ isMobile = false }) {
+export function LoggerArchitecture({ isMobile = false, isMobileCompact = false }) {
   const servers = [
     { name: 'Server 1', status: 'healthy', logs: '2.4M' },
     { name: 'Server 2', status: 'warning', logs: '1.8M' },
     { name: 'Server 3', status: 'healthy', logs: '3.1M' },
     { name: 'Microservice A', status: 'healthy', logs: '890K' },
   ];
+
+  // Mini compact version for mobile
+  if (isMobileCompact) {
+    return (
+      <div className="relative w-full overflow-hidden">
+        <div className="text-center mb-2 px-2">
+          <h3 className="text-sm font-bold text-white">Logger AI</h3>
+        </div>
+        <div className="relative bg-gradient-to-br from-white/[0.03] to-transparent rounded-xl p-2 border border-white/10 mx-2">
+          {/* Compact servers */}
+          <div className="grid grid-cols-2 gap-1.5 mb-2">
+            {servers.slice(0, 2).map((server) => (
+              <div
+                key={server.name}
+                className="p-1.5 rounded-lg bg-white/5 border border-white/10"
+              >
+                <div className="flex items-center justify-between mb-0.5">
+                  <span className="text-xs text-white/80 font-medium">{server.name}</span>
+                  <div
+                    className={`w-1.5 h-1.5 rounded-full ${
+                      server.status === 'healthy' ? 'bg-green-500' : 'bg-yellow-500'
+                    }`}
+                  />
+                </div>
+                <div className="text-xs text-white/50">{server.logs}</div>
+              </div>
+            ))}
+          </div>
+          {/* Compact AI Engine */}
+          <div className="flex justify-center">
+            <div className="px-2 py-1.5 rounded-lg bg-gradient-to-br from-[#707070]/30 to-[#505050]/10 border border-[#707070]/40">
+              <div className="flex items-center gap-1">
+                <Cpu className="w-3 h-3 text-[#707070]" />
+                <span className="text-xs text-white font-semibold">Logger AI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full overflow-hidden">
