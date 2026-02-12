@@ -55,7 +55,7 @@ function FeatureCard({ icon: Icon, title, description, color }: { icon: any; tit
 // Stats Section - Refined
 function StatsSection() {
   const stats = [
-    { value: '500+', label: 'Fortune Companies', sublabel: 'Tata, Reliance, Infosys, Wipro, HCL' },
+    // { value: '500+', label: 'Fortune Companies', sublabel: 'Tata, Reliance, Infosys, Wipro, HCL' },
     { value: '132+', label: 'Startups Scaled', sublabel: 'YC-backed, investor-ready' },
     { value: '99.9%', label: 'Uptime Guarantee', sublabel: 'Enterprise SLA' },
     { value: '50+', label: 'Integrations', sublabel: 'Pre-built connectors' },
@@ -63,6 +63,7 @@ function StatsSection() {
 
   return (
     <section className="relative py-24 bg-gradient-to-b from-white to-white overflow-hidden">
+        
       <div className="absolute inset-0 grid-pattern-dense opacity-5" />
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -91,7 +92,8 @@ function StatsSection() {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto justify-items-center">
+
           {stats.map((stat, idx) => (
             <motion.div
               key={stat.label}

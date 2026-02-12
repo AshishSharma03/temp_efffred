@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WelcomePopup from './components/WelcomePopup';
+import ScrollToTop from './components/ui/ScrollToTop';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -74,6 +75,7 @@ function App() {
 
   return (
     <Router>
+  <ScrollToTop/>
       <div className="min-h-screen bg-[#0a0a0a]">
         <Navbar />
         
@@ -84,6 +86,7 @@ function App() {
 
         <Suspense fallback={<PageLoader />}>
           <Routes>
+          
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/services" element={<ServicesPage />} />

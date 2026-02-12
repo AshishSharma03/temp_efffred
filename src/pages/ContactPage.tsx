@@ -8,8 +8,8 @@ import { Mail, Phone, MapPin, Send, CheckCircle, Loader2 } from 'lucide-react';
 
 const contactInfo = [
   { icon: Mail, label: 'Email', value: 'info@effred.com', href: 'mailto:info@effred.com' },
-  { icon: Phone, label: 'Phone', value: '(415) 780-9400', href: 'tel:+14157809400' },
-  { icon: MapPin, label: 'Location', value: 'San Francisco, CA', href: '#' },
+  { icon: Phone, label: 'Phone', value: '+91 885 381 4531', href: 'tel:+91885381  4531' },
+  { icon: MapPin, label: 'Location', value: 'Suncity, Gurugram, Haryana, India - 122018', href: '#' },
 ];
 
 const services = ['AI Deployments', 'DevOps', 'AIOps', 'Cloud Infrastructure', 'Custom Development', 'Product Inquiry'];
