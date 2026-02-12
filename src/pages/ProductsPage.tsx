@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Database, Brain, FileText, Ticket, Users, Building2, ArrowRight, Check, ExternalLink, Play, Zap, Shield, Globe, Lock, Cpu, Cloud, Server, Activity, BarChart3, MessageSquare, Calendar, TrendingUp, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // Product Data with Detailed Information
 const products = [
@@ -1143,15 +1143,37 @@ function IntegrationSection() {
 
 // Main Products Page Component
 export default function ProductsPage() {
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 100);
-      }
+  const location = useLocation();
+    useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.substring(1);
+
+      const scrollToSection = () => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      };
+
+      // Important for lazy + framer motion render timing
+      const timeout = setTimeout(scrollToSection, 300);
+
+      return () => clearTimeout(timeout);
     }
-  }, []);
+  }, [location]);
+
+  // useEffect(() => {
+  //   const hash = window.location.hash;
+  //   if (hash) {
+  //     const element = document.querySelector(hash);
+  //     if (element) {
+  //       setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 100);
+  //     }
+  //   }
+  // }, []);
 
   return (
     <motion.main 

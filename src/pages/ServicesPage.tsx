@@ -1,7 +1,7 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { Cpu, Cloud, Code2, GitBranch, LineChart, Check, ArrowRight, ExternalLink, Zap, Database, Workflow, Settings, Container, Globe } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 // Service Data with Detailed Information
 const services = [
@@ -701,14 +701,163 @@ function ServicesHero() {
   );
 }
 
-// Main Services Page
+// // Main Services Page
+// export default function ServicesPage() {
+//    const location = useLocation(); 
+
+
+//   // Get service from hash
+//   const getServiceFromHash = () => {
+//     const hash = location.hash.replace("#", "");
+//     return services.find((s) => s.id === hash) || services[0];
+//   };
+
+//   const [activeService, setActiveService] = useState(getServiceFromHash);
+
+//   // Sync when URL changes (back/forward navigation)
+//   useEffect(() => {
+//     const matched = getServiceFromHash();
+//     setActiveService(matched);
+//   }, [location.hash]);
+
+//   const handleServiceClick = (service: typeof services[0]) => {
+//     setActiveService(service);
+//     window.history.replaceState(null, "", `#${service.id}`);
+//   };
+
+// useEffect(() => {
+//   if (location.hash) {
+//     const serviceId = location.hash.substring(1);
+
+//     const matchedService = services.find(
+//       (service) => service.id === serviceId
+//     );
+
+//     if (matchedService) {
+//       setActiveService(matchedService);
+//     }
+//   }
+// }, [location]);
+
+//   return (
+//     <motion.main 
+//       initial={{ opacity: 0 }} 
+//       animate={{ opacity: 1 }} 
+//       exit={{ opacity: 0 }}
+//       className="min-h-screen bg-[#0a0a0a] pt-20"
+//     >
+//       <ServicesHero />
+
+//       <section className="relative py-12">
+//         <div className="absolute inset-0 grid-pattern opacity-20" />
+        
+//         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//           <div className="grid lg:grid-cols-12 gap-8">
+//             {/* Sidebar */}
+//             <div className="lg:col-span-3">
+//               <div className="sticky top-24 space-y-1">
+//                 {services.map((service) => (
+//                   <button
+//                     key={service.id}
+//                     onClick={() => {
+//                        setActiveService(service);
+//                       window.history.replaceState(null, '', `#${service.id}`);
+//                     }}
+//                     className={`w-full text-left p-4 rounded-xl transition-all ${
+//                       activeService.id === service.id 
+//                         ? 'bg-white/10 border border-white/20' 
+//                         : 'hover:bg-white/5 border border-transparent'
+//                     }`}
+//                   >
+//                     <div className="flex items-center gap-3">
+//                       <service.icon 
+//                         className="w-5 h-5" 
+//                         style={{ color: activeService.id === service.id ? service.color : '#ffffff60' }} 
+//                       />
+//                       <span className={`font-medium ${activeService.id === service.id ? 'text-white' : 'text-white/60'}`}>
+//                         {service.title}
+//                       </span>
+//                     </div>
+//                   </button>
+//                 ))}
+//               </div>
+//             </div>
+
+//             {/* Content */}
+//             <div className="lg:col-span-9">
+//               <AnimatePresence mode="wait">
+//                 <ServiceDetail service={activeService} />
+//               </AnimatePresence>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* CTA Section */}
+//       <section className="relative py-24">
+//         <div className="absolute inset-0 bg-gradient-to-br from-[#151414] to-[#0a0a0a]" />
+//         <div className="absolute inset-0 grid-pattern opacity-30" />
+        
+//         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+//           <motion.div
+//             initial={{ opacity: 0, y: 30 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             viewport={{ once: true }}
+//           >
+//             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+//               Not Sure Where to Start?
+//             </h2>
+//             <p className="text-white/60 mb-8 max-w-xl mx-auto">
+//               Let&apos;s discuss your challenges and goals. We&apos;ll help you find the right 
+//               solution for your business.
+//             </p>
+//             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+//               <Link
+//                 to="/contact"
+//                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#98ABA4] text-black font-semibold rounded-xl hover:bg-[#C2D8CF] transition-all"
+//               >
+//                 Book a Free Consultation <ArrowRight className="w-5 h-5" />
+//               </Link>
+//               <Link
+//                 to="/products"
+//                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white font-medium rounded-xl hover:bg-white/5 transition-all"
+//               >
+//                 Explore Our Products
+//               </Link>
+//             </div>
+//           </motion.div>
+//         </div>
+//       </section>
+//     </motion.main>
+//   );
+// }
+
 export default function ServicesPage() {
-  const [activeService, setActiveService] = useState(services[0]);
+  const location = useLocation();
+
+  // Get service from hash
+  const getServiceFromHash = () => {
+    const hash = location.hash.replace("#", "");
+    return services.find((s) => s.id === hash) || services[0];
+  };
+
+  const [activeService, setActiveService] = useState(getServiceFromHash);
+
+  // Sync when URL changes (back/forward navigation)
+  useEffect(() => {
+    const matched = getServiceFromHash();
+    setActiveService(matched);
+  }, [location.hash]);
+
+  const handleServiceClick = (service: typeof services[0]) => {
+    setActiveService(service);
+    window.history.replaceState(null, "", `#${service.id}`);
+  };
 
   return (
-    <motion.main 
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="min-h-screen bg-[#0a0a0a] pt-20"
     >
@@ -716,28 +865,40 @@ export default function ServicesPage() {
 
       <section className="relative py-12">
         <div className="absolute inset-0 grid-pattern opacity-20" />
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-8">
+            
             {/* Sidebar */}
             <div className="lg:col-span-3">
               <div className="sticky top-24 space-y-1">
                 {services.map((service) => (
                   <button
                     key={service.id}
-                    onClick={() => setActiveService(service)}
+                    onClick={() => handleServiceClick(service)}
                     className={`w-full text-left p-4 rounded-xl transition-all ${
-                      activeService.id === service.id 
-                        ? 'bg-white/10 border border-white/20' 
-                        : 'hover:bg-white/5 border border-transparent'
+                      activeService.id === service.id
+                        ? "bg-white/10 border border-white/20"
+                        : "hover:bg-white/5 border border-transparent"
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <service.icon 
-                        className="w-5 h-5" 
-                        style={{ color: activeService.id === service.id ? service.color : '#ffffff60' }} 
+                      <service.icon
+                        className="w-5 h-5"
+                        style={{
+                          color:
+                            activeService.id === service.id
+                              ? service.color
+                              : "#ffffff60",
+                        }}
                       />
-                      <span className={`font-medium ${activeService.id === service.id ? 'text-white' : 'text-white/60'}`}>
+                      <span
+                        className={`font-medium ${
+                          activeService.id === service.id
+                            ? "text-white"
+                            : "text-white/60"
+                        }`}
+                      >
                         {service.title}
                       </span>
                     </div>
@@ -760,7 +921,7 @@ export default function ServicesPage() {
       <section className="relative py-24">
         <div className="absolute inset-0 bg-gradient-to-br from-[#151414] to-[#0a0a0a]" />
         <div className="absolute inset-0 grid-pattern opacity-30" />
-        
+
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -771,9 +932,10 @@ export default function ServicesPage() {
               Not Sure Where to Start?
             </h2>
             <p className="text-white/60 mb-8 max-w-xl mx-auto">
-              Let&apos;s discuss your challenges and goals. We&apos;ll help you find the right 
+              Let&apos;s discuss your challenges and goals. We&apos;ll help you find the right
               solution for your business.
             </p>
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
@@ -781,6 +943,7 @@ export default function ServicesPage() {
               >
                 Book a Free Consultation <ArrowRight className="w-5 h-5" />
               </Link>
+
               <Link
                 to="/products"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white font-medium rounded-xl hover:bg-white/5 transition-all"
